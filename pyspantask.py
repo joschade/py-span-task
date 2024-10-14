@@ -385,7 +385,25 @@ def request_subject_id():
   Prompt the user to enter a subject ID and check if the input
   conforms with the required format.  If not ask again.
   """
-  print("Please enter a subject id consisting of numbers and letters:", end=' ', flush=True)
+  sid = ""
+  def read_userid():
+    sid = entry.get()
+    window.destroy()
+
+
+  window = tkinter.Tk()
+  window.title('Subjetct ID')
+  label = tkinter.Label(window, text="Please enter a subject id consisting of numbers letters:")
+  entry = tkinter.Entry(window)
+
+  button = tkinter.Button(window, text="Confirm", command=read_userid())
+
+  label.pack()
+  entry.pack()
+  button.pack()
+
+  print("Please enter a subject id consisting of numbers lett"
+        "ers:", end=' ', flush=True)
   sid = sys.stdin.readline()[:-1]
   mo = re.match('[a-zA-Z0-9]+', sid)
   if mo and mo.group() == sid:
