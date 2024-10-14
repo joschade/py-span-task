@@ -386,7 +386,7 @@ def request_subject_id():
   conforms with the required format.  If not ask again.
   """
   sid = ""
-  def read_userid():
+  def read_subject_id():
     sid = entry.get()
     window.destroy()
 
@@ -396,15 +396,14 @@ def request_subject_id():
   label = tkinter.Label(window, text="Please enter a subject id consisting of numbers letters:")
   entry = tkinter.Entry(window)
 
-  button = tkinter.Button(window, text="Confirm", command=read_userid())
+  button = tkinter.Button(window, text="Confirm", command=read_subject_id())
 
   label.pack()
   entry.pack()
   button.pack()
 
-  print("Please enter a subject id consisting of numbers lett"
-        "ers:", end=' ', flush=True)
-  sid = sys.stdin.readline()[:-1]
+  tkinter.mainloop()
+
   mo = re.match('[a-zA-Z0-9]+', sid)
   if mo and mo.group() == sid:
     return sid
