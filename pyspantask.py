@@ -385,18 +385,16 @@ def request_subject_id():
   Prompt the user to enter a subject ID and check if the input
   conforms with the required format.  If not ask again.
   """
-  sid = ""
-  def read_subject_id():
-    sid = entry.get()
-    window.destroy()
-
 
   window = tkinter.Tk()
   window.title('Subjetct ID')
   label = tkinter.Label(window, text="Please enter a subject id consisting of numbers letters:")
-  entry = tkinter.Entry(window)
 
-  button = tkinter.Button(window, text="Confirm", command=read_subject_id())
+  sid_var = tkinter.StringVar()
+
+  entry = tkinter.Entry(window, textvariable=sid_var)
+
+  button = tkinter.Button(window, text="Confirm", command=window.destroy)
 
   label.pack()
   entry.pack()
@@ -404,6 +402,7 @@ def request_subject_id():
 
   tkinter.mainloop()
 
+  sid = sid_var.get()
   mo = re.match('[a-zA-Z0-9]+', sid)
   if mo and mo.group() == sid:
     return sid
