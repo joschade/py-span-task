@@ -386,6 +386,21 @@ def request_subject_id():
   conforms with the required format.  If not ask again.
   """
 
+  def center_window(size, window):
+    window_width = size[
+      0]  # Fetches the width you gave as arg. Alternatively window.winfo_width can be used if width is not to be fixed by you.
+    window_height = size[
+      1]  # Fetches the height you gave as arg. Alternatively window.winfo_height can be used if height is not to be fixed by you.
+    window_x = int(
+      (window.winfo_screenwidth() / 2) - (window_width / 2))  # Calculates the x for the window to be in the centre
+    window_y = int(
+      (window.winfo_screenheight() / 2) - (window_height / 2))  # Calculates the y for the window to be in the centre
+
+    window_geometry = str(window_width) + 'x' + str(window_height) + '+' + str(window_x) + '+' + str(
+      window_y)  # Creates a geometric string argument
+    window.geometry(window_geometry)  # Sets the geometry accordingly.
+    return
+
   window = tkinter.Tk()
   window.title('Subjetct ID')
   label = tkinter.Label(window, text="Please enter a subject id consisting of numbers letters:")
@@ -399,6 +414,10 @@ def request_subject_id():
   label.pack()
   entry.pack()
   button.pack()
+
+  window_size = (window.winfo_width(), window.winfo_height())
+  print(window_size)
+  center_window((300,600), window)
 
   tkinter.mainloop()
 
