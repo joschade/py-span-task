@@ -415,9 +415,9 @@ def request_subject_id():
   entry.pack()
   button.pack()
 
+  window.update_idletasks()
   window_size = (window.winfo_width(), window.winfo_height())
-  print(window_size)
-  center_window((300,600), window)
+  center_window(window_size, window)
 
   tkinter.mainloop()
 
