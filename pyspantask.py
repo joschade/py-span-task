@@ -415,11 +415,10 @@ def request_subject_id():
   entry.pack()
   button.pack()
 
-  window.update_idletasks()
-  window_size = (window.winfo_width(), window.winfo_height())
-  center_window(window_size, window)
+  center_window((500, 100), window)
 
   tkinter.mainloop()
+
 
   sid = sid_var.get()
   mo = re.match('[a-zA-Z0-9]+', sid)
